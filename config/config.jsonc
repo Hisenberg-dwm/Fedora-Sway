@@ -1,0 +1,122 @@
+{
+  // Fedora Sway — Tokyo Night Waybar
+  // Left: custom launcher + persistent workspaces | Center: clock
+  // Right (left-to-right): Wi-Fi, sound, battery, Bluetooth, power
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+  "spacing": 0,
+  "margin": 0,
+
+  "modules-left": [
+    "custom/launcher",
+    "sway/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "network",
+    "wireplumber",
+    "battery",
+    "bluetooth",
+    "custom/power"
+  ],
+
+  "custom/launcher": {
+    "format": "󱄅",
+    "tooltip": false,
+    "on-click": "rofi -show drun"
+  },
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{icon}",
+    "format-icons": {
+      "focused": "󱓻"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+    "sort-by-number": true,
+    "show-special": false
+  },
+
+  "clock": {
+    "interval": 60,
+    "format": "{:%A %H:%M}",
+    "tooltip": false
+  },
+
+  "network": {
+    "align": 0.5,
+    "justify": "center",
+    "on-click": "foot -e nmtui",
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤭",
+    "format-disabled": "󰤭",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 5
+  },
+
+  "wireplumber": {
+    "align": 0.5,
+    "justify": "center",
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "scroll-step": 5,
+    "tooltip-format": "{volume}%"
+  },
+
+  "battery": {
+    "align": 0.5,
+    "justify": "center",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-plugged": "󰂄",
+    "format-icons": [
+      "󰁺", "󰁻", "󰁼", "󰁽", "󰁾",
+      "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+    ],
+    "tooltip-format": "{capacity}% {timeTo}",
+    "interval": 30
+  },
+
+  "bluetooth": {
+    "align": 0.5,
+    "justify": "center",
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱",
+    "tooltip-format": "{controller_alias}\\n{num_connections} connected",
+    "tooltip-format-connected": "{device_enumerate}",
+    "on-click": "blueman-manager"
+  },
+
+  "custom/power": {
+    "align": 0.5,
+    "justify": "center",
+    "format": "󰐥",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/power-menu.sh"
+  }
+}

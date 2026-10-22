@@ -1,0 +1,103 @@
+/* Tokyo Night — Omarchy-inspired Waybar for Fedora Sway */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+window#waybar {
+    background: #16161e;
+    color: #c0caf5;
+    border-bottom: 1px solid #292e42;
+}
+
+/* Left: launcher */
+#custom-launcher {
+    color: #c0caf5;
+    background: transparent;
+    padding: 0 9px 0 10px;
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Left: persistent workspaces; no color-based active highlight */
+#workspaces {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+#workspaces button {
+    color: #c0caf5;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0 6px;
+    margin: 0 1px;
+    min-width: 12px;
+    border-radius: 0;
+    transition: none;
+}
+#workspaces button:hover,
+#workspaces button.focused,
+#workspaces button.urgent,
+#workspaces button.visible,
+#workspaces button.persistent,
+#workspaces button.empty {
+    color: #c0caf5;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Center clock */
+#clock {
+    color: #c0caf5;
+    background: transparent;
+    padding: 0 10px;
+}
+
+/*
+ * Right-side icon tiles:
+ * - same fixed footprint for consistent alignment
+ * - text alignment is set to center in each module's config
+ * - hover highlight is identical for Wi-Fi, sound, battery, Bluetooth, and power
+ */
+#network,
+#wireplumber,
+#battery,
+#bluetooth,
+#custom-power {
+    color: #c0caf5;
+    background: transparent;
+    min-width: 32px;
+    min-height: 26px;
+    padding: 0;
+    margin: 1px 2px;
+    border-radius: 6px;
+    transition: background 120ms ease;
+}
+
+#network:hover,
+#wireplumber:hover,
+#battery:hover,
+#bluetooth:hover,
+#custom-power:hover {
+    color: #c0caf5;
+    background: #24283b;
+}
+
+/* Keep the power glyph the same size/footprint as the other status icons */
+#custom-power {
+    font-size: 13px;
+    margin-left: 4px;
+    margin-right: 5px;
+}
+
+tooltip {
+    background: #1a1b26;
+    color: #c0caf5;
+    border: 1px solid #414868;
+    border-radius: 5px;
+}
